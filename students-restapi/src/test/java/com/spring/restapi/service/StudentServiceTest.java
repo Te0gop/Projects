@@ -39,7 +39,6 @@ class StudentServiceTest {
         student.setAge(33);
     }
 
-
     @Test
     void testIfStudentIsAddedCorrectly() {
         studentService.addStudent(student);
@@ -81,10 +80,4 @@ class StudentServiceTest {
 
         assertEquals(studentService.getStudentById(1L).getFirstName(), "Mike");
     }
-
-
-
-
-
-
 }
