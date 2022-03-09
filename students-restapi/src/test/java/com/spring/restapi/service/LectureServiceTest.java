@@ -8,6 +8,9 @@ import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
+import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
+import org.springframework.test.annotation.Rollback;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -15,6 +18,9 @@ import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+@DataJpaTest
+@AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
+@Rollback(false)
 class LectureServiceTest {
 
     private static Lecture lecture;
@@ -28,8 +34,23 @@ class LectureServiceTest {
 
     @BeforeEach
     void setUp() {
-        teacher = new Teacher(1L, "Jake", "Jackson", 51, "PhD", new ArrayList<>());
-        lecture = new Lecture(1L, "Unit testing", 2, teacher);
+//        teacher = new Teacher(1L, "Jake", "Jackson", 51, "PhD", new ArrayList<>());
+        teacher = new Teacher();
+        teacher.setId(1L);
+        teacher.setFirstName("Jake");
+        teacher.setLastName("Jackson");
+        teacher.setAge(51);
+        teacher.setDegree("PhD");
+        teacher.setLectures(new ArrayList<>());
+
+        lecture = new Lecture();
+//        lecture = new Lecture(1L, "Unit testing", 2, teacher);
+        lecture.setId(1L);
+        lecture.setLectureName("Unit testing");
+        lecture.setDuration(2);
+        lecture.setTeacher(teacher);
+
+
     }
 
     @Test
