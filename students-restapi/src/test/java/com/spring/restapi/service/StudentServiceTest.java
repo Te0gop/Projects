@@ -10,6 +10,7 @@ import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 import org.mockito.junit.jupiter.MockitoExtension;
 
+import java.util.List;
 import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -40,7 +41,13 @@ class StudentServiceTest {
     void testIfStudentIsAddedCorrectly() {
         studentService.addStudent(student);
         ArgumentCaptor<Student> studentArgumentCaptor = ArgumentCaptor.forClass(Student.class);
+
+        //Capturing actual student that is passed inside save method
         verify(studentRepository).save(studentArgumentCaptor.capture());
+
+        //Verifying that captured student is the same student
+        Student capturedStudent = studentArgumentCaptor.getValue();
+        Assertions.assertThat(capturedStudent).isEqualTo(student);
     }
 
     @Test

@@ -10,12 +10,16 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-@AllArgsConstructor
 @Service
 public class StudentService {
 
-    @Autowired
+
     StudentRepository studentRepository;
+
+    //Instead @Autowired
+    public StudentService(StudentRepository studentRepository) {
+        this.studentRepository = studentRepository;
+    }
 
     public Student addStudent(Student student) {
        return studentRepository.save(student);
