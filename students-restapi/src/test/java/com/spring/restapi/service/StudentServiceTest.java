@@ -1,33 +1,28 @@
 package com.spring.restapi.service;
-
 import com.spring.restapi.entity.Student;
 import com.spring.restapi.repository.StudentRepository;
-import org.aspectj.lang.annotation.Before;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
-import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
-import org.springframework.test.annotation.Rollback;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.ArgumentCaptor;
+import org.mockito.Mock;
+import org.mockito.MockitoAnnotations;
+import org.mockito.junit.jupiter.MockitoExtension;
 
-import java.util.List;
 import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.Mockito.verify;
 
-@DataJpaTest
-@AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
-@Rollback(false)
+@ExtendWith(MockitoExtension.class)
 class StudentServiceTest {
 
     private static Student student;
 
-    @Autowired
-    StudentService studentService;
-
-    @Autowired
+    @Mock
     StudentRepository studentRepository;
+    StudentService studentService;
 
     @BeforeEach
     public void setUp() {
@@ -37,18 +32,21 @@ class StudentServiceTest {
         student.setLastName("Johnson");
         student.setEmail("john.j@gmail.com");
         student.setAge(33);
+
+        studentService = new StudentService(studentRepository);
     }
 
     @Test
     void testIfStudentIsAddedCorrectly() {
         studentService.addStudent(student);
-        assertNotNull(studentService.getStudentById(1L));
+        ArgumentCaptor<Student> studentArgumentCaptor = ArgumentCaptor.forClass(Student.class);
+        verify(studentRepository).save(studentArgumentCaptor.capture());
     }
 
     @Test
     void testListAllStudents() {
-        List<Student> studentsList = studentService.getStudents();
-        assertNotEquals(0, studentsList.size());
+        studentService.getStudents();
+        verify(studentRepository).findAll();
     }
 
     @Test

@@ -2,6 +2,7 @@ package com.spring.restapi.service;
 
 import com.spring.restapi.entity.Student;
 import com.spring.restapi.repository.StudentRepository;
+import lombok.AllArgsConstructor;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -9,15 +10,12 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+@AllArgsConstructor
 @Service
 public class StudentService {
 
+    @Autowired
     StudentRepository studentRepository;
-
-    //Instead @Autowired
-    public StudentService(StudentRepository studentRepository) {
-        this.studentRepository = studentRepository;
-    }
 
     public Student addStudent(Student student) {
        return studentRepository.save(student);
