@@ -11,11 +11,5 @@ import java.util.Optional;
 
 @Repository
 public interface FoodsRepository extends JpaRepository<Foods, Long> {
-    List<Foods> findFoodByName(String name);
 
-    List<Foods> findByExpiryDate(String expiryDate);
-
-    List<Foods> findByManufacturerName(String name);
-
-    Optional<Foods> findByPrice(BigDecimal price);
 }
