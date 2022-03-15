@@ -11,5 +11,11 @@ import java.util.Optional;
 
 @Repository
 public interface DrinksRepository extends JpaRepository<Drinks, Long> {
+    List<Drinks> findDrinkByName(String name);
 
+    Optional<Drinks> findByPrice(BigDecimal price);
+
+    List<Drinks> findByManufacturerName(String manifactureName);
+
+    Optional<Drinks> findByAlcoholContent(double alcoholContent);
 }
