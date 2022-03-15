@@ -2,6 +2,7 @@ package com.spring.shopapp.controller;
 
 import com.spring.shopapp.entity.Foods;
 import com.spring.shopapp.repository.FoodsRepository;
+import com.spring.shopapp.service.FoodService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -20,66 +21,50 @@ import java.util.Optional;
 public class FoodsController {
 
     @Autowired
-    private FoodsRepository foodRepository;
+    private FoodService foodService;
 
     @RequestMapping(value = "foods/{id}", method = RequestMethod.GET)
     public ResponseEntity<Foods> findFoodById(@PathVariable("id") Long id) {
-        Optional<Foods> food = foodRepository.findById(id);
-
-        return food.isPresent() ? new ResponseEntity<>(food.get(), HttpStatus.OK) :
-                new ResponseEntity<>(food.get(), HttpStatus.NOT_FOUND);
+        return foodService.getFoodById(id);
     }
 
     @RequestMapping(value = "foods", method = RequestMethod.POST)
     public ResponseEntity<Foods> addFoods(@RequestBody Foods food) {
-        foodRepository.save(food);
-        return new ResponseEntity<>(HttpStatus.CREATED);
+        return foodService.addFood(food);
     }
 
     @RequestMapping(value = "foods", method = RequestMethod.PUT)
     public ResponseEntity<Foods> updateFoods(@RequestBody Foods food) {
-        foodRepository.save(food);
-        return new ResponseEntity<>(HttpStatus.CREATED);
+        return foodService.updateFood(food);
     }
 
     @RequestMapping(value = "foods/name/{name}", method = RequestMethod.GET)
     public ResponseEntity<List<Foods>> findFoodByName(@PathVariable("name") String foodName) {
-        List<Foods> food = foodRepository.findFoodByName(foodName);
-        return food.isEmpty() ? new ResponseEntity<>(food, HttpStatus.NOT_FOUND) :
-                new ResponseEntity<>(food, HttpStatus.OK);
+        return foodService.findFoodByName(foodName);
     }
 
     @RequestMapping(value = "foods/price/{price}", method = RequestMethod.GET)
     public ResponseEntity<Foods> findFoodByPrice(@PathVariable("price") BigDecimal price) {
-        Optional<Foods> food = foodRepository.findByPrice(price);
-        return food.isPresent() ? new ResponseEntity<>(food.get(), HttpStatus.OK) :
-                new ResponseEntity<>(food.get(), HttpStatus.NOT_FOUND);
+        return foodService.findFoodByPrice(price);
     }
 
     @RequestMapping(value = "foods/manufacturerName/{manufacturerName}", method = RequestMethod.GET)
     public ResponseEntity<List<Foods>> findFoodByManufacturerName(@PathVariable("manufacturerName") String manufacturerName) {
-        List<Foods> food = foodRepository.findByManufacturerName(manufacturerName);
-        return food.isEmpty() ? new ResponseEntity<>(food, HttpStatus.NOT_FOUND) :
-                new ResponseEntity<>(food, HttpStatus.OK);
+        return foodService.findFoodByManufacturerName(manufacturerName);
     }
 
     @RequestMapping(value = "foods/expiryDate/{expiryDate}", method = RequestMethod.GET)
     public ResponseEntity<List<Foods>> findFoodByExpiryDate(@PathVariable("expiryDate") String expiryDate) {
-        List<Foods> food = foodRepository.findByExpiryDate(expiryDate);
-
-        return food.isEmpty() ? new ResponseEntity<>(food, HttpStatus.NOT_FOUND) :
-                new ResponseEntity<>(food, HttpStatus.OK);
+        return foodService.findFoodByExpiryDate(expiryDate);
     }
 
     @RequestMapping(value = "foods", method = RequestMethod.GET)
     public ResponseEntity<List<Foods>> findAllFoods() {
-        List<Foods> foods = new ArrayList<>(foodRepository.findAll());
-        return new ResponseEntity<>(foods, HttpStatus.OK);
+        return foodService.findAllFoods();
     }
 
     @RequestMapping(value = "foods/{id}", method = RequestMethod.DELETE)
     public ResponseEntity<Foods> deleteFoodById(@PathVariable("id") Long id) {
-        foodRepository.deleteById(id);
-        return new ResponseEntity<>(HttpStatus.OK);
+        return foodService.deleteFoodById(id);
     }
 }
