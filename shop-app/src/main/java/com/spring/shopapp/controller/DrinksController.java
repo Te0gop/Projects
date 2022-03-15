@@ -14,53 +14,52 @@ import java.util.List;
 import java.util.Optional;
 
 @Controller
-@RequestMapping("/drinks")
 public class DrinksController {
 
     @Autowired
     DrinkService drinkService;
 
-    @RequestMapping(value = "/{id}", method = RequestMethod.GET)
+    @RequestMapping(value = "/drinks/{id}", method = RequestMethod.GET)
     public ResponseEntity<Drinks> findDrinkById(@PathVariable("id") Long id) {
         return new ResponseEntity<>(drinkService.getDrinkById(id), HttpStatus.OK);
     }
 
-    @RequestMapping(value = "/name/{name}", method = RequestMethod.GET)
+    @RequestMapping(value = "/drinks/name/{name}", method = RequestMethod.GET)
     public ResponseEntity<List<Drinks>> findDrinkByName(@PathVariable("name") String name) {
         return drinkService.getDrinkByName(name);
     }
 
-    @RequestMapping(value = "drinks", method = RequestMethod.GET)
+    @RequestMapping(value = "/drinks", method = RequestMethod.GET)
     public ResponseEntity<List<Drinks>> findAllDrinks() {
         return drinkService.findAllDrinks();
     }
 
-    @RequestMapping(value = "drinks", method = RequestMethod.POST)
+    @RequestMapping(value = "/drinks", method = RequestMethod.POST)
     public ResponseEntity<Drinks> addDrinks(@RequestBody Drinks drink) {
         return drinkService.addDrink(drink);
     }
 
-    @RequestMapping(value = "drinks", method = RequestMethod.PUT)
+    @RequestMapping(value = "/drinks", method = RequestMethod.PUT)
     public ResponseEntity<Drinks> updateDrinks(@RequestBody Drinks drink) {
         return drinkService.addDrink(drink);
     }
 
-    @RequestMapping(value = "/price/{price}", method = RequestMethod.GET)
+    @RequestMapping(value = "/drinks/price/{price}", method = RequestMethod.GET)
     public ResponseEntity<Drinks> findDrinkByPrice(@PathVariable("price") BigDecimal price) {
         return drinkService.findDrinkByPrice(price);
     }
-    @RequestMapping(value = "/manufacturerName/{manufacturerName}", method = RequestMethod.GET)
+    @RequestMapping(value = "/drinks/manufacturerName/{manufacturerName}", method = RequestMethod.GET)
     public ResponseEntity<List<Drinks>> findDrinkByManufacturerName(@PathVariable("manufacturerName") String manufacturerName) {
         return drinkService.findDrinkByManufacturerName(manufacturerName);
     }
 
-    @RequestMapping(value = "drinks/alcoholContent/{alcoholContent}", method = RequestMethod.GET)
+    @RequestMapping(value = "/drinks/alcoholContent/{alcoholContent}", method = RequestMethod.GET)
     public ResponseEntity<Drinks> findDrinksByAlcoholContent(@PathVariable("alcoholContent") double alcoholContent) {
         return drinkService.findDrinksByAlcoholContent(alcoholContent);
     }
 
 
-    @RequestMapping(value="drinks/{id}", method = RequestMethod.DELETE)
+    @RequestMapping(value="/drinks/{id}", method = RequestMethod.DELETE)
     public ResponseEntity<?> deleteById(@PathVariable("id") Long id ) {
         return drinkService.deleteDrinkById(id);
     }
