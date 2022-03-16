@@ -39,9 +39,9 @@ public class DrinkController {
         return drinkService.addDrink(drink);
     }
 
-    @RequestMapping(value = "/drinks", method = RequestMethod.PUT)
-    public ResponseEntity<Drinks> updateDrinks(@RequestBody Drinks drink) {
-        return drinkService.addDrink(drink);
+    @RequestMapping(value = "/drinks/{id}", method = RequestMethod.PUT)
+    public ResponseEntity<Drinks> updateDrinks(@PathVariable("id") Long id, @RequestBody Drinks drink) {
+        return drinkService.updateDrink(drink, id);
     }
 
     @RequestMapping(value = "/drinks/price/{price}", method = RequestMethod.GET)
