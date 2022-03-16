@@ -2,11 +2,12 @@ package com.spring.shopapp.service;
 
 import com.spring.shopapp.entity.Drinks;
 import com.spring.shopapp.repository.DrinksRepository;
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
@@ -41,9 +42,17 @@ public class DrinkService {
         return new ResponseEntity<>(HttpStatus.CREATED);
     }
 
-    public ResponseEntity<Drinks> updateDrink(Drinks drink) {
-        drinksRepository.save(drink);
-        return new ResponseEntity<>(HttpStatus.CREATED);
+    public ResponseEntity<Drinks> updateDrink(Drinks drink, Long id) {
+        Optional<Drinks> existingDrink = drinksRepository.findById(id);
+
+        if(existingDrink.isEmpty()) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+        BeanUtils.copyProperties(drink, existingDrink.get(), "id");
+        drinksRepository.save(existingDrink.get());
+        return new ResponseEntity<>(HttpStatus.OK);
+
+
     }
 
     public ResponseEntity<Drinks> findDrinkByPrice(BigDecimal price) {
