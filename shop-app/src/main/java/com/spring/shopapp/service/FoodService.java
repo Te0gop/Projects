@@ -1,7 +1,7 @@
 package com.spring.shopapp.service;
-
 import com.spring.shopapp.entity.Foods;
 import com.spring.shopapp.repository.FoodsRepository;
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -18,11 +18,8 @@ public class FoodService {
     @Autowired
     FoodsRepository foodRepository;
 
-    public ResponseEntity<Foods> getFoodById(Long id) {
-        Optional<Foods> food = foodRepository.findById(id);
-
-        return food.isPresent() ? new ResponseEntity<>(food.get(), HttpStatus.OK) :
-                new ResponseEntity<>(food.get(), HttpStatus.NOT_FOUND);
+    public Foods getFoodById(Long id) {
+        return foodRepository.getById(id);
     }
 
     public ResponseEntity<Foods> addFood(Foods food) {
@@ -30,9 +27,15 @@ public class FoodService {
         return new ResponseEntity<>(HttpStatus.CREATED);
     }
 
-    public ResponseEntity<Foods> updateFood(Foods food) {
-        foodRepository.save(food);
-        return new ResponseEntity<>(HttpStatus.CREATED);
+    public ResponseEntity<Foods> updateFood(Long id, Foods food) {
+        Optional<Foods> existingFood = foodRepository.findById(id);
+
+        if(existingFood.isEmpty()) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+        BeanUtils.copyProperties(food, existingFood.get(), "id");
+        foodRepository.save(existingFood.get());
+        return new ResponseEntity<>(HttpStatus.OK);
     }
 
     public ResponseEntity<List<Foods>> findFoodByName(String foodName) {

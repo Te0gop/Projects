@@ -4,7 +4,6 @@ import com.spring.shopapp.entity.Drinks;
 import com.spring.shopapp.repository.DrinksRepository;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Bean;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
@@ -20,7 +19,6 @@ public class DrinkService {
     @Autowired
     DrinksRepository drinksRepository;
 
-//    @Transactional(readOnly = true)
     public Drinks getDrinkById(Long id) {
         return drinksRepository.getById(id);
     }
@@ -29,7 +27,6 @@ public class DrinkService {
         List<Drinks> drinkName = drinksRepository.findDrinkByName(name);
         return drinkName.isEmpty() ? new ResponseEntity<>(drinkName, HttpStatus.NOT_FOUND) :
                 new ResponseEntity<>(drinkName, HttpStatus.OK);
-
     }
 
     public ResponseEntity<List<Drinks>> findAllDrinks() {
@@ -51,8 +48,6 @@ public class DrinkService {
         BeanUtils.copyProperties(drink, existingDrink.get(), "id");
         drinksRepository.save(existingDrink.get());
         return new ResponseEntity<>(HttpStatus.OK);
-
-
     }
 
     public ResponseEntity<Drinks> findDrinkByPrice(BigDecimal price) {
