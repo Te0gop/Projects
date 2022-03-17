@@ -28,7 +28,7 @@ class DrinkControllerTest {
                 .andExpect(status().isOk()).andDo(print());
     }
     @Test
-    void testFindDrinkByInvalid() throws Exception {
+    void testFindDrinkByInvalidId() throws Exception {
         mockMvc.perform(MockMvcRequestBuilders.get("/drinks/-1"))
                 .andExpect(status().isInternalServerError()).andDo(print());
     }
@@ -79,4 +79,14 @@ class DrinkControllerTest {
                 .andExpect(status().isOk()).andDo(print());
     }
 
+    @Test
+    void testUpdateDrinkWithInvalidId() throws Exception {
+        mockMvc.perform(MockMvcRequestBuilders.put("/drinks/-1")
+                        .content("{\"name\": \"Bourbon\"," +
+                                " \"price\": 40," +
+                                " \"manufacturerName\": \"Jim Beam\"," +
+                                " \"alcoholContent\": 43}")
+                        .contentType(MediaType.APPLICATION_JSON))
+                .andExpect(status().isNotFound()).andDo(print());
+    }
 }
