@@ -25,7 +25,7 @@ public class FoodController {
 
     @RequestMapping(value = "foods/{id}", method = RequestMethod.GET)
     public ResponseEntity<Foods> findFoodById(@PathVariable("id") Long id) {
-        return foodService.getFoodById(id);
+        return new ResponseEntity<>(foodService.getFoodById(id), HttpStatus.OK);
     }
 
     @RequestMapping(value = "foods", method = RequestMethod.POST)
@@ -33,9 +33,9 @@ public class FoodController {
         return foodService.addFood(food);
     }
 
-    @RequestMapping(value = "foods", method = RequestMethod.PUT)
-    public ResponseEntity<Foods> updateFoods(@RequestBody Foods food) {
-        return foodService.updateFood(food);
+    @RequestMapping(value = "foods/{id}", method = RequestMethod.PUT)
+    public ResponseEntity<Foods> updateFoods(@PathVariable("id") Long id, @RequestBody Foods food) {
+        return foodService.updateFood(id, food);
     }
 
     @RequestMapping(value = "foods/name/{name}", method = RequestMethod.GET)
