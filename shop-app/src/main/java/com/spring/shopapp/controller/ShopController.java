@@ -15,7 +15,7 @@ public class ShopController {
     @Autowired
     private ShopService shopService;
 
-    @RequestMapping(name = "shop", method = RequestMethod.POST)
+    @RequestMapping(value = "/shop", method = RequestMethod.POST)
     public ResponseEntity<Shop> createShop(@RequestBody Shop shop) {
         return shopService.createShop(shop);
     }
