@@ -1,10 +1,13 @@
 package com.spring.shopapp.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import javax.persistence.*;
 import java.util.List;
 
 @Entity
 @Table(name="shop", schema="shop_project")
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class Shop {
 
     @Id

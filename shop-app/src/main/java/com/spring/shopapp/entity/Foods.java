@@ -8,6 +8,7 @@ import java.math.BigDecimal;
 
 @Entity
 @Table(name="foods", schema="shop_project")
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class Foods {
 
     @Id
