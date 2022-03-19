@@ -21,7 +21,7 @@ public class DrinkController {
 
     @RequestMapping(value = "/drinks/{id}", method = RequestMethod.GET)
     public ResponseEntity<Drinks> findDrinkById(@PathVariable("id") Long id) {
-        return new ResponseEntity<>(drinkService.getDrinkById(id), HttpStatus.OK);
+        return drinkService.getDrinkById(id);
     }
 
     @RequestMapping(value = "/drinks/name/{name}", method = RequestMethod.GET)
