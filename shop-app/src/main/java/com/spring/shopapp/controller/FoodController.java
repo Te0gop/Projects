@@ -25,7 +25,7 @@ public class FoodController {
 
     @RequestMapping(value = "foods/{id}", method = RequestMethod.GET)
     public ResponseEntity<Foods> findFoodById(@PathVariable("id") Long id) {
-        return new ResponseEntity<>(foodService.getFoodById(id), HttpStatus.OK);
+        return foodService.getFoodById(id);
     }
 
     @RequestMapping(value = "foods", method = RequestMethod.POST)
@@ -44,7 +44,7 @@ public class FoodController {
     }
 
     @RequestMapping(value = "foods/price/{price}", method = RequestMethod.GET)
-    public ResponseEntity<Foods> findFoodByPrice(@PathVariable("price") BigDecimal price) {
+    public ResponseEntity<List<Foods>> findFoodByPrice(@PathVariable("price") BigDecimal price) {
         return foodService.findFoodByPrice(price);
     }
 
