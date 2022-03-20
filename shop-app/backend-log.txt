@@ -1,82 +1,113 @@
-2022-03-20 09:15:36.747  INFO 10980 --- [main] com.spring.shopapp.ShopAppApplication    : Starting ShopAppApplication using Java 13.0.1 on DESKTOP-QIU51L0 with PID 10980 (D:\Workspace Git\Projects\shop-app\target\classes started by TDR in D:\Workspace Git\Projects\shop-app)
-2022-03-20 09:15:36.763  INFO 10980 --- [main] com.spring.shopapp.ShopAppApplication    : No active profile set, falling back to default profiles: default
-2022-03-20 09:15:39.435  INFO 10980 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-2022-03-20 09:15:39.639  INFO 10980 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 166 ms. Found 3 JPA repository interfaces.
-2022-03-20 09:15:41.975  INFO 10980 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
-2022-03-20 09:15:42.006  INFO 10980 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
-2022-03-20 09:15:42.006  INFO 10980 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.56]
-2022-03-20 09:15:42.350  INFO 10980 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
-2022-03-20 09:15:42.350  INFO 10980 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 5322 ms
-2022-03-20 09:15:42.925  INFO 10980 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
-2022-03-20 09:15:43.066  INFO 10980 --- [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.6.4.Final
-2022-03-20 09:15:43.472  INFO 10980 --- [main] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
-2022-03-20 09:15:43.769  INFO 10980 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
-2022-03-20 09:15:44.566  INFO 10980 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
-2022-03-20 09:15:44.629  INFO 10980 --- [main] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
-2022-03-20 09:15:47.259  INFO 10980 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
-2022-03-20 09:15:47.291  INFO 10980 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
-2022-03-20 09:15:48.822  WARN 10980 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-2022-03-20 09:15:50.286  INFO 10980 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
-2022-03-20 09:15:50.317  INFO 10980 --- [main] com.spring.shopapp.ShopAppApplication    : Started ShopAppApplication in 15.355 seconds (JVM running for 16.922)
-2022-03-20 09:16:08.814  INFO 10980 --- [http-nio-8080-exec-2] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
-2022-03-20 09:16:08.818  INFO 10980 --- [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
-2022-03-20 09:16:08.822  INFO 10980 --- [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Completed initialization in 4 ms
-2022-03-20 09:16:08.864  WARN 10980 --- [http-nio-8080-exec-2] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.HttpRequestMethodNotSupportedException: Request method 'DELETE' not supported]
-2022-03-20 09:16:35.979  WARN 10980 --- [http-nio-8080-exec-3] com.spring.shopapp.service.DrinkService  : Searching all drinks...
-2022-03-20 09:16:36.486  WARN 10980 --- [http-nio-8080-exec-3] com.spring.shopapp.service.DrinkService  : 15 drinks was found.
-2022-03-20 09:16:50.178  INFO 10980 --- [http-nio-8080-exec-4] com.spring.shopapp.service.DrinkService  : Drink with id: 1 was found successfully.
-2022-03-20 09:16:59.541  WARN 10980 --- [http-nio-8080-exec-5] com.spring.shopapp.service.DrinkService  : Searching drink with name: Vodka
-2022-03-20 09:16:59.660  INFO 10980 --- [http-nio-8080-exec-5] com.spring.shopapp.service.DrinkService  : Drink with name: Vodka was found successfully.
-2022-03-20 09:17:28.890  WARN 10980 --- [http-nio-8080-exec-6] com.spring.shopapp.service.DrinkService  : Searching drink with manufacturer name: Smirnoff
-2022-03-20 09:17:28.915  INFO 10980 --- [http-nio-8080-exec-6] com.spring.shopapp.service.DrinkService  : 5 drinks with manufacturer: Smirnoff was found.
-2022-03-20 09:17:50.047  WARN 10980 --- [http-nio-8080-exec-7] com.spring.shopapp.service.DrinkService  : Adding new drink to repository: Vodka with id: null
-2022-03-20 09:17:50.203  INFO 10980 --- [http-nio-8080-exec-7] com.spring.shopapp.service.DrinkService  : Vodka was saved successfully.
-2022-03-20 09:18:14.363  INFO 10980 --- [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
-2022-03-20 09:18:14.377  INFO 10980 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
-2022-03-20 09:18:14.457  INFO 10980 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
-2022-03-20 09:19:04.870  INFO 6468 --- [main] com.spring.shopapp.ShopAppApplication    : Starting ShopAppApplication using Java 13.0.1 on DESKTOP-QIU51L0 with PID 6468 (D:\Workspace Git\Projects\shop-app\target\classes started by TDR in D:\Workspace Git\Projects\shop-app)
-2022-03-20 09:19:04.887  INFO 6468 --- [main] com.spring.shopapp.ShopAppApplication    : No active profile set, falling back to default profiles: default
-2022-03-20 09:19:07.665  INFO 6468 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-2022-03-20 09:19:07.866  INFO 6468 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 168 ms. Found 3 JPA repository interfaces.
-2022-03-20 09:19:10.506  INFO 6468 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
-2022-03-20 09:19:10.535  INFO 6468 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
-2022-03-20 09:19:10.537  INFO 6468 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.56]
-2022-03-20 09:19:10.892  INFO 6468 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
-2022-03-20 09:19:10.893  INFO 6468 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 5659 ms
-2022-03-20 09:19:11.459  INFO 6468 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
-2022-03-20 09:19:11.576  INFO 6468 --- [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.6.4.Final
-2022-03-20 09:19:11.988  INFO 6468 --- [main] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
-2022-03-20 09:19:12.287  INFO 6468 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
-2022-03-20 09:19:13.196  INFO 6468 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
-2022-03-20 09:19:13.249  INFO 6468 --- [main] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
-2022-03-20 09:19:15.913  INFO 6468 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
-2022-03-20 09:19:15.941  INFO 6468 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
-2022-03-20 09:19:17.574  WARN 6468 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-2022-03-20 09:19:19.076  INFO 6468 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
-2022-03-20 09:19:19.104  INFO 6468 --- [main] com.spring.shopapp.ShopAppApplication    : Started ShopAppApplication in 16.222 seconds (JVM running for 17.876)
-2022-03-20 09:19:24.250  INFO 6468 --- [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
-2022-03-20 09:19:24.252  INFO 6468 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
-2022-03-20 09:19:24.263  INFO 6468 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 7 ms
-2022-03-20 09:19:24.333  WARN 6468 --- [http-nio-8080-exec-1] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.HttpRequestMethodNotSupportedException: Request method 'POST' not supported]
-2022-03-20 09:19:31.578  INFO 6468 --- [http-nio-8080-exec-3] com.spring.shopapp.service.DrinkService  : Drink with id: 1 was found successfully.
-2022-03-20 09:19:42.378  WARN 6468 --- [http-nio-8080-exec-4] com.spring.shopapp.service.DrinkService  : Searching drink with name: Vodka
-2022-03-20 09:19:42.716  INFO 6468 --- [http-nio-8080-exec-4] com.spring.shopapp.service.DrinkService  : Drink with name: Vodka was found successfully.
-2022-03-20 09:19:45.866  WARN 6468 --- [http-nio-8080-exec-5] com.spring.shopapp.service.DrinkService  : Searching drink with name: Whiskey
-2022-03-20 09:19:45.877  INFO 6468 --- [http-nio-8080-exec-5] com.spring.shopapp.service.DrinkService  : Drink with name: Whiskey was found successfully.
-2022-03-20 09:19:54.211  WARN 6468 --- [http-nio-8080-exec-6] com.spring.shopapp.service.DrinkService  : Searching all drinks...
-2022-03-20 09:19:54.265  WARN 6468 --- [http-nio-8080-exec-6] com.spring.shopapp.service.DrinkService  : 16 drinks was found.
-2022-03-20 09:20:07.725  WARN 6468 --- [http-nio-8080-exec-7] com.spring.shopapp.service.DrinkService  : Adding new drink to repository: Vodka
-2022-03-20 09:20:07.879  INFO 6468 --- [http-nio-8080-exec-7] com.spring.shopapp.service.DrinkService  : Vodka was saved successfully.
-2022-03-20 09:20:33.443  WARN 6468 --- [http-nio-8080-exec-8] com.spring.shopapp.service.DrinkService  : Searching all drinks...
-2022-03-20 09:20:33.460  WARN 6468 --- [http-nio-8080-exec-8] com.spring.shopapp.service.DrinkService  : 17 drinks was found.
-2022-03-20 09:20:50.108  WARN 6468 --- [http-nio-8080-exec-9] com.spring.shopapp.service.DrinkService  : Updating drink with id: 39
-2022-03-20 09:20:50.236  INFO 6468 --- [http-nio-8080-exec-9] com.spring.shopapp.service.DrinkService  : Vodka was updated successfully.
-2022-03-20 09:21:11.046  WARN 6468 --- [http-nio-8080-exec-10] com.spring.shopapp.service.DrinkService  : Searching drink with price: 45
-2022-03-20 09:21:11.080  INFO 6468 --- [http-nio-8080-exec-10] com.spring.shopapp.service.DrinkService  : 3 drinks with price: 45 was found.
-2022-03-20 09:21:30.243  WARN 6468 --- [http-nio-8080-exec-2] com.spring.shopapp.service.DrinkService  : Searching drink with manufacturer name: Smirnoff
-2022-03-20 09:21:30.264  INFO 6468 --- [http-nio-8080-exec-2] com.spring.shopapp.service.DrinkService  : 5 drinks with manufacturer: Smirnoff was found.
-2022-03-20 09:21:59.583  WARN 6468 --- [http-nio-8080-exec-1] com.spring.shopapp.service.DrinkService  : Searching drink with alcohol content: 45.0
-2022-03-20 09:21:59.618  INFO 6468 --- [http-nio-8080-exec-1] com.spring.shopapp.service.DrinkService  : 4 drinks with alcohol content: 45.0 was found.
-2022-03-20 09:22:15.117 ERROR 6468 --- [http-nio-8080-exec-3] com.spring.shopapp.service.DrinkService  : Drink with id: 37 was not found.
-2022-03-20 09:22:24.081  INFO 6468 --- [http-nio-8080-exec-5] com.spring.shopapp.service.DrinkService  : Drink with id: 38 was deleted successfully.
+2022-03-20 13:12:49.962  INFO 5152 --- [main] com.spring.shopapp.ShopAppApplication    : Starting ShopAppApplication using Java 13.0.1 on DESKTOP-QIU51L0 with PID 5152 (D:\Workspace Git\Projects\shop-app\target\classes started by TDR in D:\Workspace Git\Projects\shop-app)
+2022-03-20 13:12:49.978  INFO 5152 --- [main] com.spring.shopapp.ShopAppApplication    : No active profile set, falling back to default profiles: default
+2022-03-20 13:12:53.317  INFO 5152 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2022-03-20 13:12:53.504  INFO 5152 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 154 ms. Found 3 JPA repository interfaces.
+2022-03-20 13:12:55.983  INFO 5152 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2022-03-20 13:12:55.999  INFO 5152 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2022-03-20 13:12:56.009  INFO 5152 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.56]
+2022-03-20 13:12:56.353  INFO 5152 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2022-03-20 13:12:56.353  INFO 5152 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 5922 ms
+2022-03-20 13:12:56.915  INFO 5152 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2022-03-20 13:12:57.040  INFO 5152 --- [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.6.4.Final
+2022-03-20 13:12:57.509  INFO 5152 --- [main] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2022-03-20 13:12:57.806  INFO 5152 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2022-03-20 13:12:58.806  INFO 5152 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2022-03-20 13:12:58.884  INFO 5152 --- [main] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
+2022-03-20 13:13:02.515  INFO 5152 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2022-03-20 13:13:02.546  INFO 5152 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2022-03-20 13:13:04.419  WARN 5152 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2022-03-20 13:13:06.243  INFO 5152 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2022-03-20 13:13:06.283  INFO 5152 --- [main] com.spring.shopapp.ShopAppApplication    : Started ShopAppApplication in 18.002 seconds (JVM running for 19.6)
+2022-03-20 13:13:08.659  INFO 5152 --- [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2022-03-20 13:13:08.668  INFO 5152 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2022-03-20 13:13:08.682  INFO 5152 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 5 ms
+2022-03-20 13:13:08.778  WARN 5152 --- [http-nio-8080-exec-1] com.spring.shopapp.service.DrinkService  : Searching all drinks...
+2022-03-20 13:13:09.582  WARN 5152 --- [http-nio-8080-exec-1] com.spring.shopapp.service.DrinkService  : 17 drinks was found.
+2022-03-20 13:13:17.451  INFO 5152 --- [http-nio-8080-exec-3] com.spring.shopapp.service.DrinkService  : Drink with id: 1 was found successfully.
+2022-03-20 13:13:25.548  WARN 5152 --- [http-nio-8080-exec-4] com.spring.shopapp.service.DrinkService  : Searching drink with name: Whiskey
+2022-03-20 13:13:25.647  INFO 5152 --- [http-nio-8080-exec-4] com.spring.shopapp.service.DrinkService  : Drink with name: Whiskey was found successfully.
+2022-03-20 13:13:40.347  WARN 5152 --- [http-nio-8080-exec-5] com.spring.shopapp.service.DrinkService  : Searching drink with manufacturer name: Smirnoff
+2022-03-20 13:13:40.368  INFO 5152 --- [http-nio-8080-exec-5] com.spring.shopapp.service.DrinkService  : 5 drinks with manufacturer: Smirnoff was found.
+2022-03-20 13:13:57.677  WARN 5152 --- [http-nio-8080-exec-6] com.spring.shopapp.service.DrinkService  : Searching all drinks...
+2022-03-20 13:13:57.711  WARN 5152 --- [http-nio-8080-exec-6] com.spring.shopapp.service.DrinkService  : 17 drinks was found.
+2022-03-20 13:14:33.144  WARN 5152 --- [http-nio-8080-exec-7] com.spring.shopapp.service.DrinkService  : Searching drink with price: 45
+2022-03-20 13:14:33.182  INFO 5152 --- [http-nio-8080-exec-7] com.spring.shopapp.service.DrinkService  : 3 drinks with price: 45 was found.
+2022-03-20 13:14:50.045  WARN 5152 --- [http-nio-8080-exec-8] com.spring.shopapp.service.DrinkService  : Searching all drinks...
+2022-03-20 13:14:50.068  WARN 5152 --- [http-nio-8080-exec-8] com.spring.shopapp.service.DrinkService  : 17 drinks was found.
+2022-03-20 13:15:07.235  INFO 5152 --- [http-nio-8080-exec-9] com.spring.shopapp.service.DrinkService  : Drink with id: 42 was deleted successfully.
+2022-03-20 13:15:30.042  WARN 5152 --- [http-nio-8080-exec-10] com.spring.shopapp.service.DrinkService  : Updating drink with id: 39
+2022-03-20 13:15:30.092  INFO 5152 --- [http-nio-8080-exec-10] com.spring.shopapp.service.DrinkService  : null was updated successfully.
+2022-03-20 13:15:54.100  INFO 5152 --- [http-nio-8080-exec-2] com.spring.shopapp.service.DrinkService  : Drink with id: 1 was found successfully.
+2022-03-20 13:16:23.287  WARN 5152 --- [http-nio-8080-exec-1] com.spring.shopapp.service.DrinkService  : Adding new drink to repository: Whiskey
+2022-03-20 13:16:23.410  INFO 5152 --- [http-nio-8080-exec-1] com.spring.shopapp.service.DrinkService  : Whiskey was saved successfully.
+2022-03-20 13:16:28.966  WARN 5152 --- [http-nio-8080-exec-3] com.spring.shopapp.service.DrinkService  : Adding new food to repository: Whiskey
+2022-03-20 13:16:29.001  INFO 5152 --- [http-nio-8080-exec-3] com.spring.shopapp.service.DrinkService  : Whiskey was saved successfully.
+2022-03-20 13:16:39.836  WARN 5152 --- [http-nio-8080-exec-4] com.spring.shopapp.service.DrinkService  : Searching all foods...
+2022-03-20 13:16:39.885  INFO 5152 --- [http-nio-8080-exec-4] com.spring.shopapp.service.DrinkService  : 13 foods was found.
+2022-03-20 13:16:52.350  INFO 5152 --- [http-nio-8080-exec-5] com.spring.shopapp.service.DrinkService  : Food with id: 57 was deleted successfully.
+2022-03-20 13:17:10.006 ERROR 5152 --- [http-nio-8080-exec-6] com.spring.shopapp.service.DrinkService  : Food with id: 1 was not found.
+2022-03-20 13:17:10.023 ERROR 5152 --- [http-nio-8080-exec-6] o.a.c.c.C.[.[.[/].[dispatcherServlet]    : Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception [Request processing failed; nested exception is java.util.NoSuchElementException: No value present] with root cause
 
+java.util.NoSuchElementException: No value present
+	at java.base/java.util.Optional.get(Optional.java:141) ~[na:na]
+	at com.spring.shopapp.service.FoodService.deleteFoodById(FoodService.java:117) ~[classes/:na]
+	at com.spring.shopapp.controller.FoodController.deleteFoodById(FoodController.java:68) ~[classes/:na]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:na]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[na:na]
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:567) ~[na:na]
+	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:205) ~[spring-web-5.3.15.jar:5.3.15]
+	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:150) ~[spring-web-5.3.15.jar:5.3.15]
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:117) ~[spring-webmvc-5.3.15.jar:5.3.15]
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:895) ~[spring-webmvc-5.3.15.jar:5.3.15]
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:808) ~[spring-webmvc-5.3.15.jar:5.3.15]
+	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87) ~[spring-webmvc-5.3.15.jar:5.3.15]
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1067) ~[spring-webmvc-5.3.15.jar:5.3.15]
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:963) ~[spring-webmvc-5.3.15.jar:5.3.15]
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1006) ~[spring-webmvc-5.3.15.jar:5.3.15]
+	at org.springframework.web.servlet.FrameworkServlet.doDelete(FrameworkServlet.java:931) ~[spring-webmvc-5.3.15.jar:5.3.15]
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:687) ~[tomcat-embed-core-9.0.56.jar:4.0.FR]
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:883) ~[spring-webmvc-5.3.15.jar:5.3.15]
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:764) ~[tomcat-embed-core-9.0.56.jar:4.0.FR]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:227) ~[tomcat-embed-core-9.0.56.jar:9.0.56]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162) ~[tomcat-embed-core-9.0.56.jar:9.0.56]
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:53) ~[tomcat-embed-websocket-9.0.56.jar:9.0.56]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189) ~[tomcat-embed-core-9.0.56.jar:9.0.56]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162) ~[tomcat-embed-core-9.0.56.jar:9.0.56]
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100) ~[spring-web-5.3.15.jar:5.3.15]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117) ~[spring-web-5.3.15.jar:5.3.15]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189) ~[tomcat-embed-core-9.0.56.jar:9.0.56]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162) ~[tomcat-embed-core-9.0.56.jar:9.0.56]
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93) ~[spring-web-5.3.15.jar:5.3.15]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117) ~[spring-web-5.3.15.jar:5.3.15]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189) ~[tomcat-embed-core-9.0.56.jar:9.0.56]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162) ~[tomcat-embed-core-9.0.56.jar:9.0.56]
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201) ~[spring-web-5.3.15.jar:5.3.15]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117) ~[spring-web-5.3.15.jar:5.3.15]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189) ~[tomcat-embed-core-9.0.56.jar:9.0.56]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162) ~[tomcat-embed-core-9.0.56.jar:9.0.56]
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:197) ~[tomcat-embed-core-9.0.56.jar:9.0.56]
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:97) ~[tomcat-embed-core-9.0.56.jar:9.0.56]
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:540) ~[tomcat-embed-core-9.0.56.jar:9.0.56]
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:135) ~[tomcat-embed-core-9.0.56.jar:9.0.56]
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:92) ~[tomcat-embed-core-9.0.56.jar:9.0.56]
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:78) ~[tomcat-embed-core-9.0.56.jar:9.0.56]
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:357) ~[tomcat-embed-core-9.0.56.jar:9.0.56]
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:382) ~[tomcat-embed-core-9.0.56.jar:9.0.56]
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:65) ~[tomcat-embed-core-9.0.56.jar:9.0.56]
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:895) ~[tomcat-embed-core-9.0.56.jar:9.0.56]
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1732) ~[tomcat-embed-core-9.0.56.jar:9.0.56]
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49) ~[tomcat-embed-core-9.0.56.jar:9.0.56]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1191) ~[tomcat-embed-core-9.0.56.jar:9.0.56]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659) ~[tomcat-embed-core-9.0.56.jar:9.0.56]
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61) ~[tomcat-embed-core-9.0.56.jar:9.0.56]
+	at java.base/java.lang.Thread.run(Thread.java:830) ~[na:na]
+
+2022-03-20 13:17:15.316  WARN 5152 --- [http-nio-8080-exec-7] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.HttpRequestMethodNotSupportedException: Request method 'DELETE' not supported]
+2022-03-20 13:17:20.273  WARN 5152 --- [http-nio-8080-exec-9] com.spring.shopapp.service.DrinkService  : Searching all foods...
+2022-03-20 13:17:20.307  INFO 5152 --- [http-nio-8080-exec-9] com.spring.shopapp.service.DrinkService  : 12 foods was found.
+2022-03-20 13:18:08.950  WARN 5152 --- [http-nio-8080-exec-10] com.spring.shopapp.service.DrinkService  : Updating food with id: 43
+2022-03-20 13:18:08.984  INFO 5152 --- [http-nio-8080-exec-10] com.spring.shopapp.service.DrinkService  : Croissant with Jam was updated successfully.
+2022-03-20 13:19:07.866  INFO 5152 --- [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2022-03-20 13:19:07.866  INFO 5152 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2022-03-20 13:19:07.913  INFO 5152 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
