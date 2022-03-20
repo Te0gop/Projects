@@ -29,7 +29,7 @@ public class DrinkService {
         Optional<Drinks> drink = drinksRepository.findById(id);
 
         if(drink.isEmpty()) {
-            LOGGER.error("Drink not found.");
+            LOGGER.error("Drink with id: " + id + " was not found.");
             return new ResponseEntity<>(drink.get(), HttpStatus.NOT_FOUND);
         }
         LOGGER.info("Drink with id: " + id + " was found successfully.");
@@ -37,7 +37,7 @@ public class DrinkService {
     }
 
     public ResponseEntity<List<Drinks>> getDrinkByName(String name) {
-        LOGGER.debug("Searching drink with name: " + name);
+        LOGGER.warn("Searching drink with name: " + name);
 
         List<Drinks> drinkName = drinksRepository.findDrinkByName(name);
 
@@ -50,18 +50,21 @@ public class DrinkService {
     }
 
     public ResponseEntity<List<Drinks>> findAllDrinks() {
-        LOGGER.debug("Searching all drinks...");
+        LOGGER.warn("Searching all drinks...");
         List<Drinks> drinks = new ArrayList<>(drinksRepository.findAll());
+        LOGGER.warn(drinks.size() + " drinks was found.");
         return new ResponseEntity<>(drinks, HttpStatus.OK);
     }
 
     public ResponseEntity<Drinks> addDrink(Drinks drink) {
+        LOGGER.warn("Adding new drink to repository: " + drink.getName());
         drinksRepository.save(drink);
-        LOGGER.info(drink + " was saved successfully.");
+        LOGGER.info(drink.getName() + " was saved successfully.");
         return new ResponseEntity<>(HttpStatus.CREATED);
     }
 
     public ResponseEntity<Drinks> updateDrink(Drinks drink, Long id) {
+        LOGGER.warn("Updating drink with id: " + id);
         Optional<Drinks> existingDrink = drinksRepository.findById(id);
 
         if(existingDrink.isEmpty()) {
@@ -70,55 +73,55 @@ public class DrinkService {
         }
         BeanUtils.copyProperties(drink, existingDrink.get(), "id");
         drinksRepository.save(existingDrink.get());
-        LOGGER.info(drink + " was updated successfully.");
+        LOGGER.info(drink.getName() + " was updated successfully.");
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
-    public ResponseEntity<Drinks> findDrinkByPrice(BigDecimal price) {
-        LOGGER.debug("Searching drink with price: " + price);
-        Optional<Drinks> drinkPrice = drinksRepository.findByPrice(price);
+    public ResponseEntity<List<Drinks>> findDrinkByPrice(BigDecimal price) {
+        LOGGER.warn("Searching drink with price: " + price);
+        List<Drinks> drinkPrice = drinksRepository.findByPrice(price);
 
         if(drinkPrice.isEmpty()) {
-            LOGGER.error("Drink not found.");
-            return new ResponseEntity<>(drinkPrice.get(), HttpStatus.NOT_FOUND);
+            LOGGER.error("Drinks with price: "  + price + " was not found.");
+            return new ResponseEntity<>(drinkPrice, HttpStatus.NOT_FOUND);
         }
-        LOGGER.info("Drink with price: " + price + " was found successfully.");
-        return  new ResponseEntity<>(drinkPrice.get(), HttpStatus.OK);
+        LOGGER.info(drinkPrice.size() + " drinks with price: " + price + " was found.");
+        return  new ResponseEntity<>(drinkPrice, HttpStatus.OK);
     }
 
     public ResponseEntity<List<Drinks>> findDrinkByManufacturerName(String manufacturerName) {
-        LOGGER.debug("Searching drink with manufacturer name: " + manufacturerName);
+        LOGGER.warn("Searching drink with manufacturer name: " + manufacturerName);
         List<Drinks> drink = drinksRepository.findByManufacturerName(manufacturerName);
 
         if(drink.isEmpty()) {
-            LOGGER.error("Drink not found.");
+            LOGGER.error("Drinks with manufacturer: "  + manufacturerName + " was not found.");
             return new ResponseEntity<>(drink, HttpStatus.NOT_FOUND);
         }
-        LOGGER.info("Drink with manufacturerName: " + manufacturerName + " was found successfully.");
+        LOGGER.info(drink.size() + " drinks with manufacturer: " + manufacturerName + " was found.");
         return new ResponseEntity<>(drink, HttpStatus.OK);
     }
 
-    public ResponseEntity<Drinks> findDrinksByAlcoholContent(double alcoholContent) {
-        LOGGER.debug("Searching drink with alcohol content: " + alcoholContent);
-        Optional<Drinks> drink = drinksRepository.findByAlcoholContent(alcoholContent);
+    public ResponseEntity<List<Drinks>> findDrinksByAlcoholContent(double alcoholContent) {
+        LOGGER.warn("Searching drink with alcohol content: " + alcoholContent);
+        List<Drinks> drink = drinksRepository.findByAlcoholContent(alcoholContent);
 
         if(drink.isEmpty()) {
-            LOGGER.error("Drink not found.");
-            return new ResponseEntity<>(drink.get(), HttpStatus.NOT_FOUND);
+            LOGGER.error("Drinks with alcohol content: "  + alcoholContent+ " was not found.");
+            return new ResponseEntity<>(drink, HttpStatus.NOT_FOUND);
         }
-        LOGGER.info("Drink with alcoholContent: " + alcoholContent + " was found successfully.");
-        return new ResponseEntity<>(drink.get(), HttpStatus.OK);
+        LOGGER.info(drink.size() + " drinks with alcohol content: " + alcoholContent + " was found.");
+        return new ResponseEntity<>(drink, HttpStatus.OK);
     }
 
     public ResponseEntity<Drinks> deleteDrinkById(Long id) {
         Optional<Drinks> drink = drinksRepository.findById(id);
 
         if(drink.isEmpty()) {
-            LOGGER.error("Drink not found.");
+            LOGGER.error("Drink with id: " + id + " was not found.");
             return new ResponseEntity<>(drink.get(), HttpStatus.NOT_FOUND);
         }
         drinksRepository.deleteById(id);
-        LOGGER.info("Drink was deleted successfully.");
+        LOGGER.info("Drink with id: " + id + " was deleted successfully.");
         return new ResponseEntity<>(HttpStatus.OK);
     }
 }
