@@ -45,7 +45,7 @@ public class DrinkController {
     }
 
     @RequestMapping(value = "/drinks/price/{price}", method = RequestMethod.GET)
-    public ResponseEntity<Drinks> findDrinkByPrice(@PathVariable("price") BigDecimal price) {
+    public ResponseEntity<List<Drinks>> findDrinkByPrice(@PathVariable("price") BigDecimal price) {
         return drinkService.findDrinkByPrice(price);
     }
     @RequestMapping(value = "/drinks/manufacturerName/{manufacturerName}", method = RequestMethod.GET)
@@ -54,7 +54,7 @@ public class DrinkController {
     }
 
     @RequestMapping(value = "/drinks/alcoholContent/{alcoholContent}", method = RequestMethod.GET)
-    public ResponseEntity<Drinks> findDrinksByAlcoholContent(@PathVariable("alcoholContent") double alcoholContent) {
+    public ResponseEntity<List<Drinks>> findDrinksByAlcoholContent(@PathVariable("alcoholContent") double alcoholContent) {
         return drinkService.findDrinksByAlcoholContent(alcoholContent);
     }
 
