@@ -72,13 +72,4 @@ class StudentServiceTest {
         studentService.updateStudent(updatedStudent, 1L);
         assertEquals(studentService.getStudentById(1L).getFirstName(), "Ivan");
     }
-
-    @Test
-    void testPatchStudentById() {
-        Student patchedStudent = new Student();
-        patchedStudent.setFirstName("Mike");
-        studentService.patchStudent(1L, patchedStudent);
-
-        assertEquals(studentService.getStudentById(1L).getFirstName(), "Mike");
-    }
 }

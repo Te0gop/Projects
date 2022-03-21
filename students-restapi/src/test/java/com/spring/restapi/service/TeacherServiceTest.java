@@ -73,13 +73,4 @@ class TeacherServiceTest {
         Optional<Teacher> optionalTeacher = teacherRepository.findById(1L);
         Assertions.assertThat(optionalTeacher).isNotPresent();
     }
-
-    @Test
-    void testPatchTeacher() {
-        Teacher patchedTeacher = new Teacher();
-        patchedTeacher.setFirstName("Mike");
-        teacherService.patchTeacher(1L, patchedTeacher);
-
-        assertEquals(teacherService.getTeacherById(1L).getFirstName(), "Mike");
-    }
 }

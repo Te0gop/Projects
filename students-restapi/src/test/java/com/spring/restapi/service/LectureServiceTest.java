@@ -44,13 +44,10 @@ class LectureServiceTest {
         teacher.setLectures(new ArrayList<>());
 
         lecture = new Lecture();
-//        lecture = new Lecture(1L, "Unit testing", 2, teacher);
         lecture.setId(1L);
         lecture.setLectureName("Unit testing");
         lecture.setDuration(2);
         lecture.setTeacher(teacher);
-
-
     }
 
     @Test
@@ -84,14 +81,5 @@ class LectureServiceTest {
         lectureService.deleteLectureById(1L);
         Optional<Lecture> optionalLecture = lectureRepository.findById(1L);
         Assertions.assertThat(optionalLecture).isNotPresent();
-    }
-
-    @Test
-    void patchLecture() {
-        Lecture patchedLecture = new Lecture();
-        patchedLecture.setLectureName("OOP");
-        lectureService.patchLecture(1L, patchedLecture);
-
-        assertEquals(lectureService.getLectureById(1L).getLectureName(), "OOP");
     }
 }
