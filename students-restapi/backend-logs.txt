@@ -30,5 +30,5 @@
 2022-03-21 21:48:43.493  INFO 11020 --- [http-nio-8080-exec-5] c.spring.restapi.service.LectureService  : Conor was updated successfully.
 2022-03-21 21:48:52.794  INFO 11020 --- [http-nio-8080-exec-6] c.spring.restapi.service.LectureService  : Student with id: 6 was deleted successfully.
 2022-03-21 21:49:17.887  INFO 11020 --- [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
-2022-03-21 21:49:17.887  INFO 11020 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2022-03-21 21:49:17.887  INFO 11020 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated.....
 2022-03-21 21:49:17.934  INFO 11020 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
