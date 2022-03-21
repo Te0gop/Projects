@@ -1,17 +1,18 @@
 package com.spring.restapi.service;
 
-import com.fasterxml.jackson.databind.util.BeanUtil;
-import com.spring.restapi.entity.Student;
 import com.spring.restapi.entity.Teacher;
 import com.spring.restapi.repository.TeacherRepository;
-import org.springframework.beans.BeanUtils;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
-
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class TeacherService {
+
+    private static final Logger LOGGER = LoggerFactory.getLogger(LectureService.class);
 
     TeacherRepository teacherRepository;
 
@@ -20,35 +21,58 @@ public class TeacherService {
     }
 
     public List<Teacher> getAllTeachers() {
-        return teacherRepository.findAll();
+        LOGGER.warn("Searching all teachers...");
+        List<Teacher> teachers = new ArrayList<>(teacherRepository.findAll());
+        LOGGER.warn(teachers.size() + " teachers was found.");
+        return teachers;
     }
 
     public Teacher getTeacherById(Long id) {
-        return teacherRepository.getById(id);
+        LOGGER.debug("Searching teacher with id: " + id);
+        Optional<Teacher> teacher = teacherRepository.findById(id);
+
+        if(teacher.isEmpty()) {
+            LOGGER.error("Teacher with id: " + id + " was not found.");
+            throw new IllegalStateException();
+        }
+        LOGGER.info("Teacher with id: " + id + " was found successfully.");
+        return teacher.get();
     }
 
     public Teacher saveTeacher(Teacher teacher) {
-        return teacherRepository.save(teacher);
+        LOGGER.warn("Adding new teacher to repository: " + teacher.getFirstName());
+        teacherRepository.save(teacher);
+        LOGGER.info(teacher.getFirstName() + " was saved successfully.");
+        return teacher;
     }
 
     public Teacher updateTeacher(Long id, Teacher teacher) {
-        Teacher existingTeacher = teacherRepository.findById(id).orElseThrow();
-        existingTeacher.setFirstName(teacher.getFirstName());
-        existingTeacher.setLastName(teacher.getLastName());
-        existingTeacher.setAge(teacher.getAge());
-        existingTeacher.setDegree(teacher.getDegree());
-        teacherRepository.save(existingTeacher);
-        return existingTeacher;
+        LOGGER.warn("Updating teacher: " + teacher.getFirstName());
+        Optional<Teacher> optionalTeacher = teacherRepository.findById(id);
+
+        if(optionalTeacher.isEmpty()) {
+            LOGGER.error("Teacher with id: " + id + " was not found.");
+            throw new IllegalStateException();
+        }
+
+        Teacher updatedTeacher = teacherRepository.getById(id);
+        updatedTeacher.setFirstName(teacher.getFirstName());
+        updatedTeacher.setLastName(teacher.getLastName());
+        updatedTeacher.setAge(teacher.getAge());
+        updatedTeacher.setDegree(teacher.getDegree());
+        teacherRepository.save(updatedTeacher);
+        LOGGER.info(teacher.getFirstName() + " was updated successfully.");
+        return updatedTeacher;
     }
 
     public void deleteById(Long id) {
-        teacherRepository.findById(id).orElseThrow();
-        teacherRepository.deleteById(id);
-    }
+        Optional<Teacher> teacher = teacherRepository.findById(id);
 
-    public Teacher patchTeacher(Long id, Teacher teacher) {
-        Teacher existingTeacher = teacherRepository.findById(id).orElseThrow();
-        BeanUtils.copyProperties(teacher, existingTeacher, "id");
-        return teacherRepository.save(existingTeacher);
+        if(teacher.isEmpty()) {
+            LOGGER.error("Teacher with id: " + id + " was not found.");
+            throw new IllegalStateException();
+        }
+        teacherRepository.deleteById(id);
+        LOGGER.info("Teacher with id: " + id + " was deleted successfully.");
     }
 }

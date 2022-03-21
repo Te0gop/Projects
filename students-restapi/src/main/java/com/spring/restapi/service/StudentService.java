@@ -2,17 +2,17 @@ package com.spring.restapi.service;
 
 import com.spring.restapi.entity.Student;
 import com.spring.restapi.repository.StudentRepository;
-import lombok.AllArgsConstructor;
-import org.springframework.beans.BeanUtils;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
-
-
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class StudentService {
 
+    private static final Logger LOGGER = LoggerFactory.getLogger(LectureService.class);
 
     StudentRepository studentRepository;
 
@@ -22,36 +22,58 @@ public class StudentService {
     }
 
     public Student addStudent(Student student) {
-       return studentRepository.save(student);
+        LOGGER.warn("Adding new student to repository: " + student.getFirstName());
+        studentRepository.save(student);
+        LOGGER.info(student.getFirstName() + " was saved successfully.");
+        return student;
     }
 
     public List<Student> getStudents() {
-        return studentRepository.findAll();
+        LOGGER.warn("Searching all students...");
+        List<Student> student = new ArrayList<>(studentRepository.findAll());
+        LOGGER.warn(student.size() + " students was found.");
+        return student;
     }
 
     public Student getStudentById(Long id) {
-        return studentRepository.getById(id);
+        LOGGER.debug("Searching student with id: " + id);
+        Optional<Student> student = studentRepository.findById(id);
+
+        if(student.isEmpty()) {
+            LOGGER.error("Student with id: " + id + " was not found.");
+            throw new IllegalStateException();
+        }
+        LOGGER.info("Student with id: " + id + " was found successfully.");
+        return student.get();
     }
 
     public void deleteStudent(Long id) {
+        Optional<Student> student = studentRepository.findById(id);
+
+        if(student.isEmpty()) {
+            LOGGER.error("Student with id: " + id + " was not found.");
+            throw new IllegalStateException();
+        }
         studentRepository.deleteById(id);
+        LOGGER.info("Student with id: " + id + " was deleted successfully.");
     }
 
     public Student updateStudent(Student student, Long id) {
-        Student existingStudent = studentRepository.findById(id).orElseThrow();
-        existingStudent.setFirstName(student.getFirstName());
-        existingStudent.setLastName(student.getLastName());
-        existingStudent.setAge(student.getAge());
-        existingStudent.setEmail(student.getEmail());
-        studentRepository.save(existingStudent);
-        return existingStudent;
+        LOGGER.warn("Updating student: " + student.getFirstName());
+        Optional<Student> existingStudent = studentRepository.findById(id);
 
-    }
+        if(existingStudent.isEmpty()) {
+            LOGGER.error("Student with id: " + id + " was not found.");
+            throw new IllegalStateException();
+        }
 
-    public Student patchStudent(Long id, Student student) {
-        Student existingStudent = studentRepository.findById(id).orElseThrow();
-
-        BeanUtils.copyProperties(student, existingStudent, "id");
-        return studentRepository.save(existingStudent);
+        Student updatedStudent = studentRepository.getById(id);
+        updatedStudent.setFirstName(student.getFirstName());
+        updatedStudent.setLastName(student.getLastName());
+        updatedStudent.setAge(student.getAge());
+        updatedStudent.setEmail(student.getEmail());
+        studentRepository.save(updatedStudent);
+        LOGGER.info(student.getFirstName() + " was updated successfully.");
+        return updatedStudent;
     }
 }
