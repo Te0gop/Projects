@@ -2,12 +2,13 @@ package com.project.company.entity;
 
 import javax.persistence.*;
 
-@Table(name = "employees")
 @Entity
+@Table(name = "employees")
 public class Employee {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
     private Long id;
 
     @Column(name = "first_name")
@@ -24,6 +25,13 @@ public class Employee {
 
     @Column(name = "position")
     private String position;
+
+    @ManyToOne
+    @JoinColumn(name = "department_id", referencedColumnName = "id")
+    private Department department;
+
+    @OneToOne(mappedBy = "directorateChief")
+    private Directorate directorate;
 
     public Employee(Long id, String firstName, String lastName, String personalId, int age, String position) {
         this.id = id;
