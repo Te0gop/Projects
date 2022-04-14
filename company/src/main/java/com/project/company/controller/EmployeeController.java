@@ -1,6 +1,4 @@
 package com.project.company.controller;
-
-import com.project.company.entity.Department;
 import com.project.company.entity.Employee;
 import com.project.company.service.EmployeeService;
 import org.springframework.beans.factory.annotation.Autowired;
