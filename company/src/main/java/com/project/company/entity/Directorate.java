@@ -12,6 +12,12 @@ public class Directorate {
     @Column(name = "id")
     private Long id;
 
+    @Column(name = "name")
+    private String name;
+
+    @Column(name = "description")
+    private String description;
+
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "chief_id", referencedColumnName = "id")
     private Employee directorateChief;
@@ -50,5 +56,21 @@ public class Directorate {
 
     public void setDepartments(List<Department> departments) {
         this.departments = departments;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
 }
