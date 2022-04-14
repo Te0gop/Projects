@@ -1,4 +1,5 @@
 package com.project.company.controller;
+
 import com.project.company.entity.Directorate;
 import com.project.company.service.DirectorateService;
 import org.springframework.beans.factory.annotation.Autowired;
