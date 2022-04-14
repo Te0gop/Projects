@@ -26,12 +26,12 @@ public class Employee {
     @Column(name = "position")
     private String position;
 
+    @OneToOne(mappedBy = "directorateChief")
+    private Directorate directorate;
+
     @ManyToOne
     @JoinColumn(name = "department_id", referencedColumnName = "id")
     private Department department;
-
-    @OneToOne(mappedBy = "directorateChief")
-    private Directorate directorate;
 
     public Employee(Long id, String firstName, String lastName, String personalId, int age, String position) {
         this.id = id;
