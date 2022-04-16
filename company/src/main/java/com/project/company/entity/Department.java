@@ -1,7 +1,7 @@
 package com.project.company.entity;
 
 import javax.persistence.*;
-import java.util.List;
+import java.util.Set;
 
 @Entity
 @Table(name = "departments")
@@ -23,9 +23,9 @@ public class Department {
     private Directorate directorate;
 
     @OneToMany(mappedBy = "department")
-    private List<Employee> employees;
+    private Set<Employee> employees;
 
-    public Department(Long id, String name, String description, Directorate directorate, List<Employee> employees) {
+    public Department(Long id, String name, String description, Directorate directorate, Set<Employee> employees) {
         this.id = id;
         this.name = name;
         this.description = description;
@@ -68,11 +68,11 @@ public class Department {
         this.directorate = directorate;
     }
 
-    public List<Employee> getEmployees() {
+    public Set<Employee> getEmployees() {
         return employees;
     }
 
-    public void setEmployees(List<Employee> employees) {
+    public void setEmployees(Set<Employee> employees) {
         this.employees = employees;
     }
 }

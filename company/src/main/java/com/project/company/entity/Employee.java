@@ -33,6 +33,13 @@ public class Employee {
     @JoinColumn(name = "department_id", referencedColumnName = "id")
     private Department department;
 
+//    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+//    @JoinTable(
+//            name = "employees_roles",
+//            joinColumns = @JoinColumn(name = "employee_id"),
+//            inverseJoinColumns = @JoinColumn(name = "role_id")
+//    )
+
     public Employee(Long id, String firstName, String lastName, String personalId, int age, String position) {
         this.id = id;
         this.firstName = firstName;
