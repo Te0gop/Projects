@@ -1,6 +1,7 @@
 package com.project.company.entity;
 
 import javax.persistence.*;
+import javax.swing.text.Position;
 
 @Entity
 @Table(name = "employees")
@@ -23,8 +24,9 @@ public class Employee {
     @Column(name = "age")
     private int age;
 
+    @Enumerated(EnumType.STRING)
     @Column(name = "position")
-    private String position;
+    private Positions position;
 
     @OneToOne(mappedBy = "directorateChief")
     private Directorate directorate;
@@ -33,14 +35,7 @@ public class Employee {
     @JoinColumn(name = "department_id", referencedColumnName = "id")
     private Department department;
 
-//    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-//    @JoinTable(
-//            name = "employees_roles",
-//            joinColumns = @JoinColumn(name = "employee_id"),
-//            inverseJoinColumns = @JoinColumn(name = "role_id")
-//    )
-
-    public Employee(Long id, String firstName, String lastName, String personalId, int age, String position) {
+    public Employee(Long id, String firstName, String lastName, String personalId, int age, Positions position) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -92,11 +87,11 @@ public class Employee {
         this.age = age;
     }
 
-    public String getPosition() {
+    public Positions getPosition() {
         return position;
     }
 
-    public void setPosition(String position) {
+    public void setPosition(Positions position) {
         this.position = position;
     }
 }
