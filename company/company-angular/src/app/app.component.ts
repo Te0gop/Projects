@@ -9,20 +9,14 @@ import { EmployeeService } from './employee/employee.service';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit{
-  public employees: Employee[] | undefined;
 
-  constructor(private employeeService: EmployeeService) { }
+  title: any;
+
+  constructor() { }
 
   ngOnInit() {
-    this.getEmployees();
   }
 
-  public getEmployees(): void {
-    this.employeeService.getEmployees().subscribe(
-      (response: Employee[]) => {
-        this.employees = response;
-      },
-      (error: HttpErrorResponse) => alert(error.message));
-  }
+
 
 }
