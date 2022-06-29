@@ -29,3 +29,44 @@
 2022-06-29 07:57:14.627  INFO 1204 --- [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
 2022-06-29 07:57:14.629  INFO 1204 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
 2022-06-29 07:57:14.634  INFO 1204 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2022-06-29 10:39:51.630  INFO 10476 --- [main] com.project.company.CompanyApplication   : Starting CompanyApplication using Java 18.0.1.1 on DESKTOP-7SLVKBP with PID 10476 (D:\Git\Projects\company\target\classes started by Te0gop in D:\Git\Projects\company)
+2022-06-29 10:39:51.633  INFO 10476 --- [main] com.project.company.CompanyApplication   : No active profile set, falling back to 1 default profile: "default"
+2022-06-29 10:39:52.202  INFO 10476 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2022-06-29 10:39:52.259  INFO 10476 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 49 ms. Found 3 JPA repository interfaces.
+2022-06-29 10:39:52.755  INFO 10476 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8081 (http)
+2022-06-29 10:39:52.765  INFO 10476 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2022-06-29 10:39:52.765  INFO 10476 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.60]
+2022-06-29 10:39:52.874  INFO 10476 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2022-06-29 10:39:52.875  INFO 10476 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1197 ms
+2022-06-29 10:39:53.054  INFO 10476 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2022-06-29 10:39:53.097  INFO 10476 --- [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.6.7.Final
+2022-06-29 10:39:53.241  INFO 10476 --- [main] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2022-06-29 10:39:53.321  INFO 10476 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2022-06-29 10:39:53.461  INFO 10476 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2022-06-29 10:39:53.477  INFO 10476 --- [main] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.PostgreSQLDialect
+2022-06-29 10:39:54.109  INFO 10476 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2022-06-29 10:39:54.114  INFO 10476 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2022-06-29 10:39:54.145  WARN 10476 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2022-06-29 10:39:54.704  INFO 10476 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Will not secure any request
+2022-06-29 10:39:54.944  INFO 10476 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8081 (http) with context path ''
+2022-06-29 10:39:54.953  INFO 10476 --- [main] com.project.company.CompanyApplication   : Started CompanyApplication in 3.776 seconds (JVM running for 4.237)
+2022-06-29 10:40:05.292  INFO 10476 --- [http-nio-8081-exec-2] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2022-06-29 10:40:05.293  INFO 10476 --- [http-nio-8081-exec-2] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2022-06-29 10:40:05.294  INFO 10476 --- [http-nio-8081-exec-2] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2022-06-29 10:40:05.390  WARN 10476 --- [http-nio-8081-exec-2] c.p.company.service.EmployeeService      : Searching all employees...
+2022-06-29 10:40:05.390  WARN 10476 --- [http-nio-8081-exec-1] c.p.company.service.DirectorateService   : Searching all directorates...
+2022-06-29 10:40:05.527  WARN 10476 --- [http-nio-8081-exec-1] c.p.company.service.DirectorateService   : 2 directorates was found.
+2022-06-29 10:40:05.527  WARN 10476 --- [http-nio-8081-exec-2] c.p.company.service.EmployeeService      : 4 employees was found.
+2022-06-29 10:40:35.891  WARN 10476 --- [http-nio-8081-exec-6] c.p.company.service.DirectorateService   : Searching all directorates...
+2022-06-29 10:40:35.891  WARN 10476 --- [http-nio-8081-exec-5] c.p.company.service.EmployeeService      : Searching all employees...
+2022-06-29 10:40:35.894  WARN 10476 --- [http-nio-8081-exec-6] c.p.company.service.DirectorateService   : 2 directorates was found.
+2022-06-29 10:40:35.897  WARN 10476 --- [http-nio-8081-exec-5] c.p.company.service.EmployeeService      : 4 employees was found.
+2022-06-29 10:40:46.506  WARN 10476 --- [http-nio-8081-exec-10] c.p.company.service.DirectorateService   : Searching all directorates...
+2022-06-29 10:40:46.506  WARN 10476 --- [http-nio-8081-exec-2] c.p.company.service.DepartmentService    : Searching all departments...
+2022-06-29 10:40:46.506  WARN 10476 --- [http-nio-8081-exec-9] c.p.company.service.EmployeeService      : Searching all employees...
+2022-06-29 10:40:46.509  WARN 10476 --- [http-nio-8081-exec-10] c.p.company.service.DirectorateService   : 2 directorates was found.
+2022-06-29 10:40:46.512  WARN 10476 --- [http-nio-8081-exec-2] c.p.company.service.DepartmentService    : 0 departments was found.
+2022-06-29 10:40:46.517  WARN 10476 --- [http-nio-8081-exec-9] c.p.company.service.EmployeeService      : 4 employees was found.
+2022-06-29 10:40:53.023  INFO 10476 --- [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2022-06-29 10:40:53.025  INFO 10476 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2022-06-29 10:40:53.028  INFO 10476 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
