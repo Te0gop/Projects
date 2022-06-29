@@ -92,13 +92,13 @@ export class DirectorateComponent implements OnInit {
     button.setAttribute('data-toggle', 'modal');
 
     if(mode === 'add') {
-      button.setAttribute('data-target', '#addEmployeeModal');
+      button.setAttribute('data-target', '#addDirectorateModal');
     }
     if(mode === 'edit') {
-      button.setAttribute('data-target', '#updateEmployeeModal');
+      button.setAttribute('data-target', '#updateDirectorateModal');
     }
     if(mode === 'delete') {
-      button.setAttribute('data-target', '#deleteEmployeeModal');
+      button.setAttribute('data-target', '#deleteDirectorateModal');
     }
 
     container?.appendChild(button);
