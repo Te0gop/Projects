@@ -1,7 +1,8 @@
-<div class="container">
-    <table class="table table-hover">
+    
+<div class="container overlay">
+    <table class="table table-hover table-custom">
         <thead>
-            <tr>
+            <tr class="table-heading">
                 <th scope="col">ID</th>
                 <th scope="col">Name</th>
                 <th scope="col">TransactionID</th>
@@ -13,7 +14,7 @@
                 <td>{{transaction.id}}</td>
                 <td>{{transaction.name}}</td>
                 <td>{{transaction.transactionId}}</td>
-                <button type="button" class="btn btn-warning">Refund</button>
+                <button type="button" class="btn btn-warning button-refund">Refund</button>
             </tr>
         </tbody>
     </table>
